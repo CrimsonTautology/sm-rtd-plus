@@ -36,7 +36,7 @@
 #define SOUND_FINAL			"weapons/cguard/charging.wav"
 #define SOUND_BOOM			"weapons/explode3.wav"
 #define SOUND_LOW_HEALTH	"vo/medic_autodejectedtie07.wav"
-#define SOUND_MELEE			"vo/heavy_meleedare02.wav"
+#define SOUND_MELEE			"vo/halloween_merasmus/sf14_merasmus_effect_noguns_01.wav"
 #define SOUND_BLIP			"buttons/blip1.wav"
 #define SOUND_NOSTALGIA		"ui/tv_tune.wav"
 #define SOUND_EARTHQUAKE	"ambient/atmosphere/terrain_rumble1.wav"
@@ -65,10 +65,10 @@
 #define SOUND_LOW_GRAVITY	"vo/scout_sf12_badmagic11.wav"
 #define SOUND_NO_JETPACK    "common/bugreporter_failed.wav"
 #define SOUND_REVERSE_GOOMBA "common/bugreporter_failed.wav"
-#define SOUND_HIGH_GRAVITY	"vo/scout_sf12_badmagic11.wav"
-#define SOUND_KART      	"vo/scout_sf12_badmagic11.wav"
-#define SOUND_GHOST      	"vo/scout_sf12_badmagic11.wav"
-#define SOUND_UNDERWATER   	"vo/scout_sf12_badmagic11.wav"
+#define SOUND_HIGH_GRAVITY	"vo/soldier_sf12_badmagic11.wav"
+#define SOUND_KART      	"vo/halloween_merasmus/sf14_merasmus_minigame_all_start_02.wav"
+#define SOUND_GHOST      	"vo/halloween_merasmus/sf12_wheel_ghosts05.wav"
+#define SOUND_UNDERWATER   	"vo/halloween_merasmus/sf14_merasmus_effect_swimming_06.wav"
 
 #define SLOT_PRIMARY 0
 #define SLOT_SECONDARY 1

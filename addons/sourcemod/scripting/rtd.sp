@@ -10,7 +10,7 @@
 
 #define PLUGIN_VERSION 		"0.4.4.2"
 #define PLUGIN_PREFIX 		"\x07FFD700[RTD]\x01"
-#define MAX_RTD_EFFECTS		36
+#define MAX_RTD_EFFECTS		37
 
 #define COLOR_PERK_GOOD 	"\x0732CD32"
 #define COLOR_PERK_BAD 		"\x078650AC"
@@ -129,7 +129,8 @@ enum g_eCurrentPerk
 	PERK_INSTANT_KILLS,
 	PERK_BIG_HEAD,
 	PERK_TINY_PLAYER,
-    PERK_NO_JETPACK
+    PERK_NO_JETPACK,
+    PERK_REVERSE_GOOMBA
 };
 
 enum g_eDiceModes
@@ -1292,6 +1293,15 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 			g_nPlayerData[client][g_hPlayerExtra] = CreateTimer(1.0, Timer_Countdown, client, TIMER_REPEAT);
 			g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);				
 		}
+		case PERK_REVERSE_GOOMBA:
+		{
+			PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);		
+			
+			EmitSoundToClient(client, SOUND_NO_JETPACK); //TODO
+			
+			g_nPlayerData[client][g_hPlayerExtra] = CreateTimer(1.0, Timer_Countdown, client, TIMER_REPEAT);
+			g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);				
+		}
 	}
 }
 
@@ -1433,6 +1443,10 @@ TerminateEffect(client, g_eCurrentPerk:nPerk, bool:bIsAlive=true)
 			}
 		}
 		case PERK_NO_JETPACK:
+		{
+			PrintCenterText(client, " ");
+		}
+		case PERK_REVERSE_GOOMBA:
 		{
 			PrintCenterText(client, " ");
 		}
@@ -3133,6 +3147,27 @@ public Action:OnStartJetpack(client)
                 }
             case PERK_NO_JETPACK:
                 {
+                    return Plugin_Handled;
+                }
+        }
+    }
+
+    return Plugin_Continue;
+}
+
+public Action:OnStomp(attacker, victim, &Float:damageMultiplier, &Float:damageBonus, &Float:JumpPower)
+{
+    if(g_nPlayerData[attacker][g_nPlayerState] == STATE_ROLLING)
+    {
+        switch(g_nPlayerData[attacker][g_nPlayerPerk])
+        {
+            case PERK_NOCLIP:
+                {
+                    return Plugin_Handled;
+                }
+            case PERK_REVERSE_GOOMBA:
+                {
+                    GoombaStomp(victim, attacker);
                     return Plugin_Handled;
                 }
         }

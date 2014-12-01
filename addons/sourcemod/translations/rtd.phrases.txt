@@ -402,4 +402,12 @@
 	{
 		"en"				"You lost your jetpack.  You can no longer fly around."
 	}
+	"#no_reverse_goomba"
+	{
+		"en"				"reverse goomba"
+	}
+	"#no_reverse_goomba"
+	{
+		"en"				"Goomba Stomps have been reversed.  Don't jump on other player's heads or else!"
+	}
 }

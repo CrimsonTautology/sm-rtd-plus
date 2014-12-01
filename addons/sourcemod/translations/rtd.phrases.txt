@@ -410,4 +410,20 @@
 	{
 		"en"				"Goomba Stomps have been reversed.  Don't jump on other player's heads or else!"
 	}
+	"#high_gravity"
+	{
+		"en"				"high gravity"
+	}
+	"#high_gravity_desc"
+	{
+		"en"				"You feel really heavy.  You can't jump and jetpacking harder."
+	}
+	"#kart"
+	{
+		"en"				"kart"
+	}
+	"#kart_desc"
+	{
+		"en"				"You are now in a bumper car.  Bump into other players."
+	}
 }

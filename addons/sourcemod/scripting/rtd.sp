@@ -10,7 +10,7 @@
 
 #define PLUGIN_VERSION 		"0.4.4.2"
 #define PLUGIN_PREFIX 		"\x07FFD700[RTD]\x01"
-#define MAX_RTD_EFFECTS		37
+#define MAX_RTD_EFFECTS		39
 
 #define COLOR_PERK_GOOD 	"\x0732CD32"
 #define COLOR_PERK_BAD 		"\x078650AC"
@@ -65,6 +65,8 @@
 #define SOUND_LOW_GRAVITY	"vo/scout_sf12_badmagic11.wav"
 #define SOUND_NO_JETPACK    "common/bugreporter_failed.wav"
 #define SOUND_REVERSE_GOOMBA "common/bugreporter_failed.wav"
+#define SOUND_HIGH_GRAVITY	"vo/scout_sf12_badmagic11.wav"
+#define SOUND_KART      	"vo/scout_sf12_badmagic11.wav"
 
 #define SLOT_PRIMARY 0
 #define SLOT_SECONDARY 1
@@ -131,7 +133,9 @@ enum g_eCurrentPerk
 	PERK_BIG_HEAD,
 	PERK_TINY_PLAYER,
     PERK_NO_JETPACK,
-    PERK_REVERSE_GOOMBA
+    PERK_REVERSE_GOOMBA,
+	PERK_HIGH_GRAVITY,
+    PERK_KART
 };
 
 enum g_eDiceModes
@@ -171,6 +175,7 @@ new Handle:g_hCvarChance;
 new Handle:g_hCvarDistance;
 new Handle:g_hCvarHealth;
 new Handle:g_hCvarGravity;
+new Handle:g_hCvarHighGravity;
 new Handle:g_hCvarSnail;
 new Handle:g_hCvarTrigger;
 new Handle:g_hCvarAdmin;
@@ -293,6 +298,7 @@ public OnPluginStart()
 	g_hCvarDistance = CreateConVar("sm_rtd_distance", "275.0", "Death radius for toxic kills.");
 	g_hCvarHealth = CreateConVar("sm_rtd_health", "1000", "Amount of health given upon increased health.");
 	g_hCvarGravity = CreateConVar("sm_rtd_gravity", "0.1", "Low gravity multiplier.");
+	g_hCvarHighGravity = CreateConVar("sm_rtd_high_gravity", "5.0", "High gravity multiplier.");
 	g_hCvarSnail = CreateConVar("sm_rtd_snail", "50.0", "Speed for snail effect.");
 	g_hCvarTrigger = CreateConVar("sm_rtd_trigger", "rollthedice,roll", "Chat triggers seperated by commas.");
 	g_hCvarAdmin = CreateConVar("sm_rtd_admin", "", "Set the admin flag required for access. (must have all flags 'o' or 'ao')");
@@ -463,6 +469,8 @@ public OnMapStart()
 	PrecacheSound(SOUND_LOW_GRAVITY);
 	PrecacheSound(SOUND_NO_JETPACK);
 	PrecacheSound(SOUND_REVERSE_GOOMBA);
+	PrecacheSound(SOUND_HIGH_GRAVITY);
+	PrecacheSound(SOUND_KART);
 	
 	g_iSpriteBeam = PrecacheModel("materials/sprites/laser.vmt");
 	g_iSpriteExplosion = PrecacheModel("sprites/sprite_fire01.vmt");
@@ -1305,6 +1313,26 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 			g_nPlayerData[client][g_hPlayerExtra] = CreateTimer(1.0, Timer_Countdown, client, TIMER_REPEAT);
 			g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);				
 		}
+		case PERK_HIGH_GRAVITY:
+		{
+			PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+			
+			EmitSoundToClient(client, SOUND_HIGH_GRAVITY);
+			SetEntityGravity(client, GetConVarFloat(g_hCvarHighGravity));
+			
+			g_nPlayerData[client][g_hPlayerExtra] = CreateTimer(1.0, Timer_Countdown, client, TIMER_REPEAT);
+			g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);				
+		}
+        case PERK_KART:
+        {
+            PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+            EmitSoundToAll(SOUND_KART, client);
+            TF2_AddCondition(client, TFCond:82, flDuration);
+            SetEntProp(client, Prop_Send, "m_iKartHealth", 0);
+
+            g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+        }
 	}
 }
 
@@ -1451,6 +1479,12 @@ TerminateEffect(client, g_eCurrentPerk:nPerk, bool:bIsAlive=true)
 		}
 		case PERK_REVERSE_GOOMBA:
 		{
+			PrintCenterText(client, " ");
+		}
+		case PERK_HIGH_GRAVITY:
+		{
+			SetEntityGravity(client, 1.0);
+			
 			PrintCenterText(client, " ");
 		}
 	}
@@ -3132,6 +3166,10 @@ public Action:OnJetpackStep(client, &Float:force, &bool:force_stop)
                 {
                     force_stop = true;
                 }
+            case PERK_KART:
+                {
+                    force_stop = true;
+                }
         }
     }
 
@@ -3149,6 +3187,10 @@ public Action:OnStartJetpack(client)
                     return Plugin_Handled;
                 }
             case PERK_NO_JETPACK:
+                {
+                    return Plugin_Handled;
+                }
+            case PERK_KART:
                 {
                     return Plugin_Handled;
                 }

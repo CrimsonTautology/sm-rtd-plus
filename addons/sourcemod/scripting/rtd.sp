@@ -64,6 +64,7 @@
 #define SOUND_NOCLIP		"vo/scout_sf12_goodmagic05.wav"
 #define SOUND_LOW_GRAVITY	"vo/scout_sf12_badmagic11.wav"
 #define SOUND_NO_JETPACK    "common/bugreporter_failed.wav"
+#define SOUND_REVERSE_GOOMBA "common/bugreporter_failed.wav"
 
 #define SLOT_PRIMARY 0
 #define SLOT_SECONDARY 1
@@ -460,6 +461,8 @@ public OnMapStart()
 	PrecacheSound(SOUND_TINYPLAYER);
 	PrecacheSound(SOUND_NOCLIP);
 	PrecacheSound(SOUND_LOW_GRAVITY);
+	PrecacheSound(SOUND_NO_JETPACK);
+	PrecacheSound(SOUND_REVERSE_GOOMBA);
 	
 	g_iSpriteBeam = PrecacheModel("materials/sprites/laser.vmt");
 	g_iSpriteExplosion = PrecacheModel("sprites/sprite_fire01.vmt");
@@ -1297,7 +1300,7 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 		{
 			PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);		
 			
-			EmitSoundToClient(client, SOUND_NO_JETPACK); //TODO
+			EmitSoundToClient(client, SOUND_REVERSE_GOOMBA); //TODO
 			
 			g_nPlayerData[client][g_hPlayerExtra] = CreateTimer(1.0, Timer_Countdown, client, TIMER_REPEAT);
 			g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);				

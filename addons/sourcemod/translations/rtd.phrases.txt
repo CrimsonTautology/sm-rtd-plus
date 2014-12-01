@@ -426,4 +426,20 @@
 	{
 		"en"				"You are now in a bumper car.  Bump into other players."
 	}
+	"#ghost"
+	{
+		"en"				"ghost"
+	}
+	"#ghost_desc"
+	{
+		"en"				"Oh no you turned into a ghost.  Go scare other players"
+	}
+	"#underwater"
+	{
+		"en"				"underwater"
+	}
+	"#underwater_desc"
+	{
+		"en"				"Youblub blubre unblub wablub ter"
+	}
 }

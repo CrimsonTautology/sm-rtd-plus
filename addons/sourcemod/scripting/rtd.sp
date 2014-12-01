@@ -10,7 +10,7 @@
 
 #define PLUGIN_VERSION 		"0.4.4.2"
 #define PLUGIN_PREFIX 		"\x07FFD700[RTD]\x01"
-#define MAX_RTD_EFFECTS		39
+#define MAX_RTD_EFFECTS		41
 
 #define COLOR_PERK_GOOD 	"\x0732CD32"
 #define COLOR_PERK_BAD 		"\x078650AC"
@@ -67,6 +67,8 @@
 #define SOUND_REVERSE_GOOMBA "common/bugreporter_failed.wav"
 #define SOUND_HIGH_GRAVITY	"vo/scout_sf12_badmagic11.wav"
 #define SOUND_KART      	"vo/scout_sf12_badmagic11.wav"
+#define SOUND_GHOST      	"vo/scout_sf12_badmagic11.wav"
+#define SOUND_UNDERWATER   	"vo/scout_sf12_badmagic11.wav"
 
 #define SLOT_PRIMARY 0
 #define SLOT_SECONDARY 1
@@ -135,7 +137,9 @@ enum g_eCurrentPerk
     PERK_NO_JETPACK,
     PERK_REVERSE_GOOMBA,
 	PERK_HIGH_GRAVITY,
-    PERK_KART
+    PERK_KART,
+    PERK_GHOST,
+    PERK_UNDERWATER
 };
 
 enum g_eDiceModes
@@ -471,6 +475,8 @@ public OnMapStart()
 	PrecacheSound(SOUND_REVERSE_GOOMBA);
 	PrecacheSound(SOUND_HIGH_GRAVITY);
 	PrecacheSound(SOUND_KART);
+	PrecacheSound(SOUND_GHOST);
+	PrecacheSound(SOUND_UNDERWATER);
 	
 	g_iSpriteBeam = PrecacheModel("materials/sprites/laser.vmt");
 	g_iSpriteExplosion = PrecacheModel("sprites/sprite_fire01.vmt");
@@ -1330,6 +1336,24 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
             EmitSoundToAll(SOUND_KART, client);
             TF2_AddCondition(client, TFCond:82, flDuration);
             SetEntProp(client, Prop_Send, "m_iKartHealth", 0);
+
+            g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+        }
+        case PERK_GHOST:
+        {
+            PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+            EmitSoundToAll(SOUND_GHOST, client);
+            TF2_AddCondition(client, TFCond:77, flDuration);
+
+            g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+        }
+        case PERK_UNDERWATER:
+        {
+            PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+            EmitSoundToAll(SOUND_UNDERWATER, client);
+            TF2_AddCondition(client, TFCond:86, flDuration);
 
             g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
         }
@@ -3191,6 +3215,14 @@ public Action:OnStartJetpack(client)
                     return Plugin_Handled;
                 }
             case PERK_KART:
+                {
+                    return Plugin_Handled;
+                }
+            case PERK_GHOST:
+                {
+                    return Plugin_Handled;
+                }
+            case PERK_UNDERWATER:
                 {
                     return Plugin_Handled;
                 }

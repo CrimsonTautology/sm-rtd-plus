@@ -302,7 +302,7 @@ public OnPluginStart()
 	g_hCvarDistance = CreateConVar("sm_rtd_distance", "275.0", "Death radius for toxic kills.");
 	g_hCvarHealth = CreateConVar("sm_rtd_health", "1000", "Amount of health given upon increased health.");
 	g_hCvarGravity = CreateConVar("sm_rtd_gravity", "0.1", "Low gravity multiplier.");
-	g_hCvarHighGravity = CreateConVar("sm_rtd_high_gravity", "5.0", "High gravity multiplier.");
+	g_hCvarHighGravity = CreateConVar("sm_rtd_high_gravity", "3.0", "High gravity multiplier.");
 	g_hCvarSnail = CreateConVar("sm_rtd_snail", "50.0", "Speed for snail effect.");
 	g_hCvarTrigger = CreateConVar("sm_rtd_trigger", "rollthedice,roll", "Chat triggers seperated by commas.");
 	g_hCvarAdmin = CreateConVar("sm_rtd_admin", "", "Set the admin flag required for access. (must have all flags 'o' or 'ao')");
@@ -3244,7 +3244,23 @@ public Action:OnStomp(attacker, victim, &Float:damageMultiplier, &Float:damageBo
                 }
             case PERK_REVERSE_GOOMBA:
                 {
+                    g_nPlayerData[attacker][g_nPlayerState] = STATE_IDLE;
                     GoombaStomp(victim, attacker);
+                    g_nPlayerData[attacker][g_nPlayerState] = STATE_ROLLING;
+                    return Plugin_Handled;
+                }
+        }
+    }
+
+    if(g_nPlayerData[victim][g_nPlayerState] == STATE_ROLLING)
+    {
+        switch(g_nPlayerData[victim][g_nPlayerPerk])
+        {
+            case PERK_REVERSE_GOOMBA:
+                {
+                    g_nPlayerData[victim][g_nPlayerState] = STATE_IDLE;
+                    GoombaStomp(victim, attacker);
+                    g_nPlayerData[victim][g_nPlayerState] = STATE_ROLLING;
                     return Plugin_Handled;
                 }
         }

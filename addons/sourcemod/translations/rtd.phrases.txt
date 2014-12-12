@@ -442,4 +442,12 @@
 	{
 		"en"				"Youblub blubre unblub wablub ter"
 	}
+	"#robot"
+	{
+		"en"				"robot"
+	}
+	"#robot_desc"
+	{
+		"en"				"BEEP BOOP KILL ALL HUMANS"
+	}
 }

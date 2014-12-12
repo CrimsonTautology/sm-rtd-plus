@@ -2277,7 +2277,7 @@ public Action:Timer_Taunt(Handle:hTimer, any:client)
 {
     if(client >= 1 && client <= MaxClients && IsClientInGame(client) && g_nPlayerData[client][g_nPlayerState] == STATE_ROLLING && g_nPlayerData[client][g_nPlayerPerk] == PERK_TAUNT)
     {
-        FakeClientCommand(client, "+taunt");
+        FakeClientCommand(client, "taunt");
 
         return Plugin_Continue;
     }

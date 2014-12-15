@@ -9,7 +9,7 @@
 #include <goomba>
 #include <betherobot>
 
-#define PLUGIN_VERSION 		"0.4.4.2"
+#define PLUGIN_VERSION 		"0.4.4.2custom"
 #define PLUGIN_PREFIX 		"\x07FFD700[RTD]\x01"
 #define MAX_RTD_EFFECTS		42
 

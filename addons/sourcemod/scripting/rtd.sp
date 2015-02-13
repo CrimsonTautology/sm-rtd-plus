@@ -1367,8 +1367,8 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 
                 EmitSoundToAll(SOUND_ROBOT, client);
                 BeTheRobot_SetRobot(client, true);
-                TF2_AddCondition(client, TFCond_CritOnFirstBlood, flDuration);
-                SetEntityHealth(client, GetClientHealth(client) * 3);
+                TF2_AddCondition(client, TFCond:90, flDuration);
+                TF2_AddCondition(client, TFCond:95, flDuration);
 
                 g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
             }
@@ -1529,7 +1529,6 @@ TerminateEffect(client, g_eCurrentPerk:nPerk, bool:bIsAlive=true)
         case PERK_ROBOT:
             {
                 BeTheRobot_SetRobot(client, false);
-                SetEntityHealth(client, (GetClientHealth(client) / 3) + 1);
                 PrintCenterText(client, " ");
             }
     }

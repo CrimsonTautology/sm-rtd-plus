@@ -3383,10 +3383,10 @@ public Action:OnStomp(attacker, victim, &Float:damageMultiplier, &Float:damageBo
 
 public GiveHorsemann(client)
 {   
-    ServerCommand("sm_behhh %i", GetClientUserId(client));
+    ServerCommand("sm_behhh #%i", GetClientUserId(client));
 }
 
 public GiveMerasmus(client)
 {   
-    ServerCommand("sm_bemerasmus %i", GetClientUserId(client));
+    ServerCommand("sm_bemerasmus #%i", GetClientUserId(client));
 }

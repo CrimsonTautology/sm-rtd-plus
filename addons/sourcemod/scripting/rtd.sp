@@ -1599,12 +1599,12 @@ TerminateEffect(client, g_eCurrentPerk:nPerk, bool:bIsAlive=true)
             }
         case PERK_HHH:
             {
-                FakeClientCommand(client, "explode");
+                TF2_RespawnPlayer(client);
                 PrintCenterText(client, " ");
             }
         case PERK_MERASMUS:
             {
-                FakeClientCommand(client, "explode");
+                TF2_RespawnPlayer(client);
                 PrintCenterText(client, " ");
             }
     }

@@ -3289,3 +3289,13 @@ public Action:OnStomp(attacker, victim, &Float:damageMultiplier, &Float:damageBo
 
     return Plugin_Continue;
 }
+
+public GiveHorsemann(client)
+{   
+    ServerCommand("sm_behhh %i", client);
+}
+
+public GiveMerasmus(client)
+{   
+    ServerCommand("sm_bemerasmus %i", client);
+}

@@ -111,7 +111,7 @@ enum g_eCurrentPerk
     PERK_INVIS,
     PERK_CLOAK,
     PERK_CRITS,
-    PERK_INFINITE_AMMO,
+    PERK_BULLET_HELL,
     PERK_SCARY_BULLETS,
     PERK_SENTRY,
     PERK_HOMING,
@@ -1063,11 +1063,13 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
                 g_nPlayerData[client][g_hPlayerExtra] = CreateTimer(1.0, Timer_Countdown, client, TIMER_REPEAT);
                 g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);			
             }
-        case PERK_INFINITE_AMMO:
+        case PERK_BULLET_HELL:
             {
                 PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
 
                 EmitSoundToClient(client, SOUND_INFINTE_AMMO);
+
+                TF2_AddCondition(client, TFCond:91, flDuration);
 
                 ClearWeaponCache(client);
 
@@ -1418,7 +1420,7 @@ TerminateEffect(client, g_eCurrentPerk:nPerk, bool:bIsAlive=true)
             {
                 PrintCenterText(client, " ");
             }
-        case PERK_INFINITE_AMMO:
+        case PERK_BULLET_HELL:
             {
                 PrintCenterText(client, " ");
             }
@@ -1928,7 +1930,7 @@ public Action:OnPlayerRunCmd(client, &buttons, &impulse, Float:vel[3], Float:ang
                 {
                     SetEntDataFloat(client, g_iOffsetCloak, 100.0);
                 }
-            case PERK_INFINITE_AMMO:
+            case PERK_BULLET_HELL:
                 {
                     new iWeapon = GetActiveWeapon(client);
                     if(iWeapon > MaxClients)

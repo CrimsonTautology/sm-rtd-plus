@@ -185,13 +185,13 @@
 	{
 		"en"				"Constant crits without the requirement of hacks!"
 	}
-	"#infinite_ammo"
+	"#bullet_hell"
 	{
-		"en"				"infinite ammo"
+		"en"				"bullet hell"
 	}
-	"#infinite_ammo_desc"
+	"#bullet_hell_desc"
 	{
-		"en"				"No need to reload - we've got you covered!"
+		"en"				"Faster move speed; faster firing speed; infinite ammo"
 	}
 	"#scary_bullets"
 	{

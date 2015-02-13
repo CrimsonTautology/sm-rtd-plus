@@ -450,4 +450,44 @@
 	{
 		"en"				"BEEP BOOP KILL ALL HUMANS"
 	}
+	"#vampire"
+	{
+		"en"				"vampire"
+	}
+	"#vampire_desc"
+	{
+		"en"				"Absorb damage delt as HP"
+	}
+	"#turtle"
+	{
+		"en"				"turtle"
+	}
+	"#turtle_desc"
+	{
+		"en"				"Defensive buff as well as passive regen;  you can tank anything"
+	}
+	"#hawk"
+	{
+		"en"				"hawk"
+	}
+	"#hawk_desc"
+	{
+		"en"				"More accurate and move faster"
+	}
+	"#hhh"
+	{
+		"en"				"Horseless Headless Horsemann"
+	}
+	"#hhh_desc"
+	{
+		"en"				"Must take heads"
+	}
+	"#merasmus"
+	{
+		"en"				"merasmus"
+	}
+	"#merasmus_desc"
+	{
+		"en"				"Merasmus has come for your souls"
+	}
 }

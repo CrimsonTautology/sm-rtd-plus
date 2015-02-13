@@ -11,7 +11,7 @@
 
 #define PLUGIN_VERSION 		"0.4.4.2custom"
 #define PLUGIN_PREFIX 		"\x07FFD700[RTD]\x01"
-#define MAX_RTD_EFFECTS		42
+#define MAX_RTD_EFFECTS		47
 
 #define COLOR_PERK_GOOD 	"\x0732CD32"
 #define COLOR_PERK_BAD 		"\x078650AC"
@@ -142,7 +142,12 @@ enum g_eCurrentPerk
     PERK_KART,
     PERK_GHOST,
     PERK_UNDERWATER,
-    PERK_ROBOT
+    PERK_ROBOT,
+    PERK_VAMPIRE,
+    PERK_TURTLE,
+    PERK_HAWK,
+    PERK_HHH,
+    PERK_MERASMUS
 };
 
 enum g_eDiceModes
@@ -1374,6 +1379,53 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 
                 g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
             }
+        case PERK_VAMPIRE:
+            {
+                PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+                //EmitSoundToAll(SOUND_VAMPIRE, client);
+                TF2_AddCondition(client, TFCond:94, flDuration);
+
+                g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+            }
+        case PERK_TURTLE:
+            {
+                PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+                //EmitSoundToAll(SOUND_TURTLE, client);
+                TF2_AddCondition(client, TFCond:92, flDuration);
+                TF2_AddCondition(client, TFCond:93, flDuration);
+
+                g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+            }
+        case PERK_HAWK:
+            {
+                PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+                //EmitSoundToAll(SOUND_HAWK, client);
+                TF2_AddCondition(client, TFCond:96, flDuration);
+                TF2_AddCondition(client, TFCond:97, flDuration);
+
+                g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+            }
+        case PERK_HHH:
+            {
+                PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+                //EmitSoundToAll(SOUND_HHH, client);
+                GiveHorsemann(client);
+
+                g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+            }
+        case PERK_MERASMUS:
+            {
+                PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
+
+                //EmitSoundToAll(SOUND_MERASMUS, client);
+                GiveMerasmus(client);
+
+                g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
+            }
     }
 }
 
@@ -1531,6 +1583,28 @@ TerminateEffect(client, g_eCurrentPerk:nPerk, bool:bIsAlive=true)
         case PERK_ROBOT:
             {
                 BeTheRobot_SetRobot(client, false);
+                PrintCenterText(client, " ");
+            }
+        case PERK_VAMPIRE:
+            {
+                PrintCenterText(client, " ");
+            }
+        case PERK_TURTLE:
+            {
+                PrintCenterText(client, " ");
+            }
+        case PERK_HAWK:
+            {
+                PrintCenterText(client, " ");
+            }
+        case PERK_HHH:
+            {
+                FakeClientCommand(client, "explode");
+                PrintCenterText(client, " ");
+            }
+        case PERK_MERASMUS:
+            {
+                FakeClientCommand(client, "explode");
                 PrintCenterText(client, " ");
             }
     }
@@ -3248,6 +3322,14 @@ public Action:OnStartJetpack(client)
                 {
                     return Plugin_Handled;
                 }
+            case PERK_HHH:
+                {
+                    return Plugin_Handled;
+                }
+            case PERK_MERASMUS:
+                {
+                    return Plugin_Handled;
+                }
         }
     }
 
@@ -3283,6 +3365,14 @@ public Action:OnStomp(attacker, victim, &Float:damageMultiplier, &Float:damageBo
                     g_nPlayerData[victim][g_nPlayerState] = STATE_IDLE;
                     GoombaStomp(victim, attacker);
                     g_nPlayerData[victim][g_nPlayerState] = STATE_ROLLING;
+                    return Plugin_Handled;
+                }
+            case PERK_HHH:
+                {
+                    return Plugin_Handled;
+                }
+            case PERK_MERASMUS:
+                {
                     return Plugin_Handled;
                 }
         }

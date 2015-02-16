@@ -1071,8 +1071,6 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 
                 EmitSoundToClient(client, SOUND_INFINTE_AMMO);
 
-                TF2_AddCondition(client, TFCond:91, flDuration);
-
                 ClearWeaponCache(client);
 
                 g_nPlayerData[client][g_hPlayerExtra] = CreateTimer(1.0, Timer_Countdown, client, TIMER_REPEAT);

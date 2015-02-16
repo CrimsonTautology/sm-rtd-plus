@@ -1002,7 +1002,6 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 
                 EmitSoundToAll(SOUND_SPEED, client);
                 TF2_AddCondition(client, TFCond_SpeedBuffAlly, flDuration);
-                TF2_AddCondition(client, TFCond:97, flDuration);
 
                 g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
             }

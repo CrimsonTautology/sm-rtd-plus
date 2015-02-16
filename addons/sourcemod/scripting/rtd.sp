@@ -501,6 +501,16 @@ public OnMapStart()
         PrecacheSound(g_strSoundScoutBB[i]);
     }
 
+    //Precache ghosts
+    PrecacheModel("models/props_halloween/ghost_no_hat.mdl", true);
+    PrecacheSound("vo/halloween_boo1.wav", true);
+    PrecacheSound("vo/halloween_boo2.wav", true);
+    PrecacheSound("vo/halloween_boo3.wav", true);
+    PrecacheSound("vo/halloween_boo4.wav", true);
+    PrecacheSound("vo/halloween_boo5.wav", true);
+    PrecacheSound("vo/halloween_boo6.wav", true);
+    PrecacheSound("vo/halloween_boo7.wav", true);
+
     ClearArray(g_hArrayHoming);
 
     g_nGameMode = GameMode_Other;

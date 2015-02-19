@@ -3287,10 +3287,6 @@ public Action:OnStartJetpack(client)
                 {
                     return Plugin_Handled;
                 }
-            case PERK_MERASMUS:
-                {
-                    return Plugin_Handled;
-                }
         }
     }
 

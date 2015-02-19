@@ -1012,6 +1012,7 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
 
                 EmitSoundToAll(SOUND_SPEED, client);
                 TF2_AddCondition(client, TFCond_SpeedBuffAlly, flDuration);
+                TF2_AddCondition(client, TFCond:79, flDuration);
 
                 g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);
             }
@@ -1079,6 +1080,8 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
                 PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
 
                 EmitSoundToClient(client, SOUND_INFINTE_AMMO);
+
+                TF2_AddCondition(client, TFCond:81, flDuration);
 
                 ClearWeaponCache(client);
 

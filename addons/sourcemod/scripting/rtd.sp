@@ -1376,7 +1376,11 @@ InitiateEffect(client, g_eCurrentPerk:nPerk)
             {
                 PrintToChatAll("%s %T", PLUGIN_PREFIX, "RTD_Effect_Time", LANG_SERVER, g_strTeamColors[iTeam], client, 0x01, g_nPerks[_:nPerk][g_nPerkType] == PERK_GOOD ? COLOR_PERK_GOOD : COLOR_PERK_BAD, g_nPerks[_:nPerk][g_strPerkName], 0x01, "\x04", RoundToFloor(flDuration), 0x01);
 
-                EmitSoundToAll(SOUND_ROBOT, client);
+                //EmitSoundToAll(SOUND_ROBOT, client);
+                TF2_AddCondition(client, TFCond:26, flDuration);
+                TF2_AddCondition(client, TFCond:28, flDuration);
+                TF2_AddCondition(client, TFCond:31, flDuration);
+                TF2_AddCondition(client, TFCond:50, flDuration);
                 BeTheRobot_SetRobot(client, true);
 
                 g_nPlayerData[client][g_hPlayerMain] = CreateTimer(flDuration, Timer_EffectEnd, client, TIMER_REPEAT);

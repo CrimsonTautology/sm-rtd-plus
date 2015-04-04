@@ -27,49 +27,49 @@
 #define COLOR_RED			{255,75,75,255}
 #define COLOR_BLUE			{75,75,255,255}
 
-#define SOUND_SANDVICH		"vo/heavy_sandwichtaunt17.wav"
-#define SOUND_SPEED			"vo/scout_apexofjump02.wav"
-#define SOUND_CHARGED		"vo/medic_autochargeready02.wav"
-#define SOUND_CLOAK			"vo/taunts/spy_taunts16.wav"
+#define SOUND_SANDVICH		"vo/heavy_sandwichtaunt17.mp3"
+#define SOUND_SPEED			"vo/scout_apexofjump02.mp3"
+#define SOUND_CHARGED		"vo/medic_autochargeready02.mp3"
+#define SOUND_CLOAK			"vo/taunts/spy_taunts16.mp3"
 #define SOUND_EXPLODE		"items/pumpkin_explode1.wav"
-#define SOUND_SNAIL			"vo/scout_dominationhvy08.wav"
+#define SOUND_SNAIL			"vo/scout_dominationhvy08.mp3"
 #define SOUND_BEEP			"buttons/button17.wav"
 #define SOUND_FINAL			"weapons/cguard/charging.wav"
 #define SOUND_BOOM			"weapons/explode3.wav"
-#define SOUND_LOW_HEALTH	"vo/medic_autodejectedtie07.wav"
-#define SOUND_MELEE			"vo/halloween_merasmus/sf14_merasmus_effect_noguns_01.wav"
+#define SOUND_LOW_HEALTH	"vo/medic_autodejectedtie07.mp3"
+#define SOUND_MELEE			"vo/halloween_merasmus/sf14_merasmus_effect_noguns_01.mp3"
 #define SOUND_BLIP			"buttons/blip1.wav"
 #define SOUND_NOSTALGIA		"ui/tv_tune.wav"
 #define SOUND_EARTHQUAKE	"ambient/atmosphere/terrain_rumble1.wav"
-#define SOUND_SENTRY		"vo/engineer_autobuildingsentry02.wav"
-#define SOUND_NOPE			"vo/engineer_no01.wav"
+#define SOUND_SENTRY		"vo/engineer_autobuildingsentry02.mp3"
+#define SOUND_NOPE			"vo/engineer_no01.mp3"
 #define SOUND_STRANGE 		"ambient/cow1.wav"
-#define SOUND_DISPENSER		"vo/engineer_autobuildingdispenser02.wav"
-#define SOUND_SAUCE			"vo/scout_autodejectedtie02.wav"
-#define SOUND_TOXIC			"vo/soldier_pickaxetaunt01.wav"
-#define SOUND_SSENTRY		"vo/engineer_needsentry01.wav"
-#define SOUND_SDISPENSER	"vo/engineer_needdispenser01.wav"
-#define SOUND_TIMEBOMB		"vo/heavy_cartmovingforwardoffense15.wav"
-#define SOUND_BEACON		"vo/scout_award01.wav"
-#define SOUND_GODMODE		"vo/scout_invincible01.wav"
-#define SOUND_WCHARGE		"vo/soldier_battlecry01.wav"
-#define SOUND_BLIND			"vo/test_one.wav"
+#define SOUND_DISPENSER		"vo/engineer_autobuildingdispenser02.mp3"
+#define SOUND_SAUCE			"vo/scout_autodejectedtie02.mp3"
+#define SOUND_TOXIC			"vo/soldier_pickaxetaunt01.mp3"
+#define SOUND_SSENTRY		"vo/engineer_needsentry01.mp3"
+#define SOUND_SDISPENSER	"vo/engineer_needdispenser01.mp3"
+#define SOUND_TIMEBOMB		"vo/heavy_cartmovingforwardoffense15.mp3"
+#define SOUND_BEACON		"vo/scout_award01.mp3"
+#define SOUND_GODMODE		"vo/scout_invincible01.mp3"
+#define SOUND_WCHARGE		"vo/soldier_battlecry01.mp3"
+#define SOUND_BLIND			"vo/test_one.mp3"
 #define SOUND_INVIS			"player/spy_cloak.wav"
-#define SOUND_INFINTE_AMMO	"vo/taunts/engineer_taunts05.wav"
-#define SOUND_CRITS			"vo/taunts/demoman_taunts11.wav"
-#define SOUND_DRUGS			"vo/demoman_positivevocalization04.wav"
-#define SOUND_HOMING		"vo/sniper_domination16.wav"
-#define SOUND_BIGHEAD		"vo/scout_sf12_badmagic16.wav"
-#define SOUND_JUMP			"vo/scout_sf12_goodmagic04.wav"
-#define SOUND_TINYPLAYER	"vo/scout_sf12_badmagic28.wav"
-#define SOUND_NOCLIP		"vo/scout_sf12_goodmagic05.wav"
-#define SOUND_LOW_GRAVITY	"vo/scout_sf12_badmagic11.wav"
+#define SOUND_INFINTE_AMMO	"vo/taunts/engineer_taunts05.mp3"
+#define SOUND_CRITS			"vo/taunts/demoman_taunts11.mp3"
+#define SOUND_DRUGS			"vo/demoman_positivevocalization04.mp3"
+#define SOUND_HOMING		"vo/sniper_domination16.mp3"
+#define SOUND_BIGHEAD		"vo/scout_sf12_badmagic16.mp3"
+#define SOUND_JUMP			"vo/scout_sf12_goodmagic04.mp3"
+#define SOUND_TINYPLAYER	"vo/scout_sf12_badmagic28.mp3"
+#define SOUND_NOCLIP		"vo/scout_sf12_goodmagic05.mp3"
+#define SOUND_LOW_GRAVITY	"vo/scout_sf12_badmagic11.mp3"
 #define SOUND_NO_JETPACK    "common/bugreporter_failed.wav"
 #define SOUND_REVERSE_GOOMBA "common/bugreporter_failed.wav"
-#define SOUND_HIGH_GRAVITY	"vo/soldier_sf12_badmagic11.wav"
-#define SOUND_KART      	"vo/halloween_merasmus/sf14_merasmus_minigame_all_start_02.wav"
-#define SOUND_GHOST      	"vo/halloween_merasmus/sf12_wheel_ghosts05.wav"
-#define SOUND_UNDERWATER   	"vo/halloween_merasmus/sf14_merasmus_effect_swimming_06.wav"
+#define SOUND_HIGH_GRAVITY	"vo/soldier_sf12_badmagic11.mp3"
+#define SOUND_KART      	"vo/halloween_merasmus/sf14_merasmus_minigame_all_start_02.mp3"
+#define SOUND_GHOST      	"vo/halloween_merasmus/sf12_wheel_ghosts05.mp3"
+#define SOUND_UNDERWATER   	"vo/halloween_merasmus/sf14_merasmus_effect_swimming_06.mp3"
 #define SOUND_ROBOT         "common/bugreporter_failed.wav"
 
 #define SLOT_PRIMARY 0
@@ -229,8 +229,8 @@ new Float:g_flDiedInstant[MAXPLAYERS+1];
 new String:g_strClass[][] = {"unknown", "scout", "sniper", "soldier", "demoman", "medic", "heavy", "pyro", "spy", "engineer"};
 
 new String:g_strSoundScoutBB[][] = {"items/scout_boombox_02.wav", "items/scout_boombox_03.wav", "items/scout_boombox_04.wav", "items/scout_boombox_05.wav"};
-new String:g_strSoundHeavyFire[][] = {"vo/heavy_autoonfire01.wav", "vo/heavy_autoonfire02.wav", "vo/heavy_autoonfire03.wav", "vo/heavy_autoonfire04.wav", "vo/heavy_autoonfire05.wav"};
-new String:g_strSoundHeavyYell[][] = {"vo/heavy_yell10.wav", "vo/heavy_yell11.wav", "vo/heavy_yell12.wav", "vo/heavy_yell14.wav", "vo/heavy_yell15.wav", "vo/heavy_yell3.wav", "vo/heavy_yell4.wav", "vo/heavy_yell5.wav", "vo/heavy_yell6.wav", "vo/heavy_yell7.wav", "vo/heavy_yell8.wav", "vo/heavy_yell9.wav"};
+new String:g_strSoundHeavyFire[][] = {"vo/heavy_autoonfire01.mp3", "vo/heavy_autoonfire02.mp3", "vo/heavy_autoonfire03.mp3", "vo/heavy_autoonfire04.mp3", "vo/heavy_autoonfire05.mp3"};
+new String:g_strSoundHeavyYell[][] = {"vo/heavy_yell10.mp3", "vo/heavy_yell11.mp3", "vo/heavy_yell12.mp3", "vo/heavy_yell14.mp3", "vo/heavy_yell15.mp3", "vo/heavy_yell3.mp3", "vo/heavy_yell4.mp3", "vo/heavy_yell5.mp3", "vo/heavy_yell6.mp3", "vo/heavy_yell7.mp3", "vo/heavy_yell8.mp3", "vo/heavy_yell9.mp3"};
 
 new g_iOffsetMedigun, g_iOffsetCloak, g_iOffsetSpeed, g_iOffsetClip, g_iOffsetAmmo, g_iOffsetAmmoType, g_iOffsetActive, g_iOffsetDef, g_iOffsetColor, g_iOffsetDecaps, g_iOffsetSniper, g_iOffsetBow, g_iOffsetAirDash, g_iOffsetHeadScale, g_iOffsetModelScale;
 new g_iSpriteExplosion, g_iSpriteBeam, g_iSpriteHalo;
@@ -429,13 +429,13 @@ public OnMapStart()
     {
         decl String:strSound[40];
 
-        Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath01.wav", g_strClass[i]);
+        Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath01.mp3", g_strClass[i]);
         PrecacheSound(strSound);
 
-        Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath02.wav", g_strClass[i]);
+        Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath02.mp3", g_strClass[i]);
         PrecacheSound(strSound);
 
-        Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath03.wav", g_strClass[i]);
+        Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath03.mp3", g_strClass[i]);
         PrecacheSound(strSound);
     }
 
@@ -503,13 +503,13 @@ public OnMapStart()
 
     //Precache ghosts
     PrecacheModel("models/props_halloween/ghost_no_hat.mdl", true);
-    PrecacheSound("vo/halloween_boo1.wav", true);
-    PrecacheSound("vo/halloween_boo2.wav", true);
-    PrecacheSound("vo/halloween_boo3.wav", true);
-    PrecacheSound("vo/halloween_boo4.wav", true);
-    PrecacheSound("vo/halloween_boo5.wav", true);
-    PrecacheSound("vo/halloween_boo6.wav", true);
-    PrecacheSound("vo/halloween_boo7.wav", true);
+    PrecacheSound("vo/halloween_boo1.mp3", true);
+    PrecacheSound("vo/halloween_boo2.mp3", true);
+    PrecacheSound("vo/halloween_boo3.mp3", true);
+    PrecacheSound("vo/halloween_boo4.mp3", true);
+    PrecacheSound("vo/halloween_boo5.mp3", true);
+    PrecacheSound("vo/halloween_boo6.mp3", true);
+    PrecacheSound("vo/halloween_boo7.mp3", true);
 
     ClearArray(g_hArrayHoming);
 
@@ -1675,7 +1675,7 @@ public Action:Event_PlayerDeath(Handle:hEvent, const String:strEventName[], bool
                     g_flDiedToxic[iVictim] = 0.0;
 
                     decl String:strSound[40];
-                    Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath0%d.wav", g_strClass[TF2_GetPlayerClass(iVictim)], GetRandomIntBetween(1, 3));
+                    Format(strSound, sizeof(strSound), "vo/%s_paincrticialdeath0%d.mp3", g_strClass[TF2_GetPlayerClass(iVictim)], GetRandomIntBetween(1, 3));
                     EmitSoundToAll(strSound, iVictim);
 
                     return Plugin_Continue;
